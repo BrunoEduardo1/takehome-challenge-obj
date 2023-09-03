@@ -12,5 +12,5 @@ interface AccountRepositoryInterface
 
     public function getAll();
 
-    public function updateBalance($accountId, $amount);
+    public function updateBalance($accountId, $newBalance);
 }

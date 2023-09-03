@@ -18,7 +18,7 @@ class AccountRepositoryMock implements AccountRepositoryInterface
     private function initializeData()
     {
         $this->data = [
-            ['id' => 1, 'balance' => 100],
+            ['id' => 1, 'balance' => 500],
             ['id' => 2, 'balance' => 120],
         ];
     }
@@ -48,11 +48,11 @@ class AccountRepositoryMock implements AccountRepositoryInterface
         return new $this->model($data);
     }
 
-    public function updateBalance($accountId, $amount)
+    public function updateBalance($accountId, $newBalance)
     {
         foreach ($this->data as $account) {
             if ($account['id'] === $accountId) {
-                $account['balance'] -= $amount;
+                $account['balance'] = $newBalance;
                 return new $this->model($account);
             }
         }

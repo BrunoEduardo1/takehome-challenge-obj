@@ -59,7 +59,9 @@ class TransactionService
             return ['errors' => ['transaction' => __('messages.insufficient_balance')]];
         }
 
-        $this->accountRepository->updateBalance($data['account_id'], $amountAfterFees);
+        $newBalance = $account->balance - $amountAfterFees;
+
+        $this->accountRepository->updateBalance($data['account_id'], $newBalance);
 
         $transaction = $this->transactionRepository->create([
             'account_id' => $data['account_id'],
