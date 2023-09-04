@@ -66,6 +66,7 @@ class TransactionService
         $transaction = $this->transactionRepository->create([
             'account_id' => $data['account_id'],
             'amount' => $amountAfterFees,
+            'payment_method' => $data['payment_method'],
         ]);
 
         return $transaction;
