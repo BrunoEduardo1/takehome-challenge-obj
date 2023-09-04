@@ -6,6 +6,7 @@ use App\Http\Requests\CreateAccountRequest;
 use App\Http\Resources\AccountResource;
 use Illuminate\Http\Request;
 use App\Services\AccountService;
+use Symfony\Component\HttpFoundation\Response;
 
 class AccountsController extends Controller
 {
@@ -24,10 +25,10 @@ class AccountsController extends Controller
         $account = $this->accountService->create($data);
 
         if (!$account || !empty($account['errors'])) {
-            return response()->json($account, 422);
+            return response()->json($account, Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
-        return response()->json($this->createResource($account), 201);
+        return response()->json($this->createResource($account), Response::HTTP_CREATED);
     }
 
     public function getById(Request $request)
@@ -37,7 +38,7 @@ class AccountsController extends Controller
         $account = $this->accountService->getById($id);
 
         if (!$account || !empty($account['errors'])) {
-            return response($account, 404);
+            return response($account, Response::HTTP_NOT_FOUND);
         }
 
         return response()->json($this->createResource($account));
