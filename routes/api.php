@@ -21,4 +21,6 @@ Route::group([
 	Route::get('account', 'AccountsController@getById')->name('accounts.getById');
 	Route::post('account', 'AccountsController@create')->name('accounts.create');
 
+	Route::post('transaction', 'TransactionsController@create')->name('transactions.create');
+
 });

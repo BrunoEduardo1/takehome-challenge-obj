@@ -11,6 +11,8 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
+    protected $itemResource;
+
     protected function createResource($data)
     {
         if (!$this->itemResource) {
