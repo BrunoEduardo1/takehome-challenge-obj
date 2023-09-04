@@ -2,8 +2,7 @@ name: Laravel Tests on PR from Dev to Main
 
 on:
   pull_request:
-    branches:
-      - dev
+    branches: [main]
   workflow_dispatch: {} # Enable manual triggering
 
 jobs:
