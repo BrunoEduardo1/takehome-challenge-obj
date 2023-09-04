@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateAccountRequest;
+use App\Http\Resources\AccountResource;
 use Illuminate\Http\Request;
 use App\Services\AccountService;
 
 class AccountsController extends Controller
 {
     private $accountService;
+    protected $itemResource = AccountResource::class;
 
     public function __construct(AccountService $accountService)
     {
@@ -25,7 +27,7 @@ class AccountsController extends Controller
             return response()->json($account, 422);
         }
 
-        return response()->json($account, 201);
+        return response()->json($this->createResource($account), 201);
     }
 
     public function getById(Request $request)
@@ -38,6 +40,6 @@ class AccountsController extends Controller
             return response($account, 404);
         }
 
-        return response()->json($account);
+        return response()->json($this->createResource($account));
     }
 }
