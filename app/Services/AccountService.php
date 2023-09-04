@@ -46,6 +46,10 @@ class AccountService
     {
         $account = $this->accountRepository->getById($accountId);
 
+        if (!$account) {
+            return ['errors' => ['account' => __('messages.account_not_found')]];
+        }
+
         return $account;
     }
 }
