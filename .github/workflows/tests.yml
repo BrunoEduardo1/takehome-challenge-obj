@@ -1,0 +1,51 @@
+name: Laravel Tests on PR from Dev to Main
+
+on:
+  pull_request:
+    branches:
+      - dev
+  workflow_dispatch: {} # Enable manual triggering
+
+jobs:
+  laravel_tests:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php-version: [8.2]
+
+    env:
+      DB_CONNECTION: sqlite
+      DB_DATABASE: database/database.sqlite
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+
+      - name: Install dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+      - name: Set up environment variables
+        run: cp .env.example .env
+
+      - name: Generate app key
+        run: php artisan key:generate
+
+      - name: Generate jwt secret
+        run: php artisan jwt:secret
+
+      - name: Create Database
+        run: |
+          mkdir -p database
+          touch database/database.sqlite
+
+      - name: Migrate database
+        run: php artisan migrate
+
+      - name: Run tests
+        run: php artisan test
