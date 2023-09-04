@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class AccountsControllerTest extends TestCase
-{    
+{
     use RefreshDatabase;
 
     public function test_create_account(): void
