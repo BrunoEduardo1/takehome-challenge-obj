@@ -36,9 +36,6 @@ jobs:
       - name: Generate app key
         run: php artisan key:generate
 
-      - name: Generate jwt secret
-        run: php artisan jwt:secret
-
       - name: Create Database
         run: |
           mkdir -p database
