@@ -37,15 +37,29 @@ Instead of repeatedly typing `./vendor/bin/sail` to execute Sail commands, add t
 alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
 ```
 
-## Routes
+## Postman Collection
 
-[Postman Collection](https://www.postman.com/bruno-dev1/workspace/objective/collection/28578263-21dcaddf-e4b1-43bb-b688-3dc3f53fa372?action=share&creator=28578263)
+[API Testing Collection](https://www.postman.com/bruno-dev1/workspace/objective/collection/28578263-21dcaddf-e4b1-43bb-b688-3dc3f53fa372?action=share&creator=28578263)
 
 ## Tests
 
 ```
+sail artisan migrate --env=testing
+
 sail artisan test
 ```
+
+## Directory Structure
+
+- `app/Contracts/Repositories`: Contains interfaces for repositories.
+- `app/Models`: Houses the project's data models.
+- `app/Repositories`: Contains implementations of data repositories.
+- `app/Http/Requests`: Includes validation logic for incoming requests.
+- `app/Http/Resources`: Handles the formatting of output data.
+- `app/Http/Controllers`: Manages request handling and validations.
+- `app/Services`: Houses the project's core business logic.
+- `tests`: Contains feature and unit tests.
+- `.github`: GitHub Actions workflows for automating tests.
 
 ## About laravel
 [Laravel](https://laravel.com) is a web application framework with expressive, elegant syntax. A web framework provides a structure and starting point for creating your application, allowing you to focus on creating something amazing while we sweat the details.
