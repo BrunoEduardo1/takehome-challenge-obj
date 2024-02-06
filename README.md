@@ -8,9 +8,9 @@
 ### Running the app
 
 ```
-git clone git@github.com:BrunoEduardo1/objective-laravel.git
+git clone git@github.com:BrunoEduardo1/takehome-challenge-obj.git
 
-cd objective-laravel
+cd takehome-challenge-obj
 
 docker run --rm \
     -u "$(id -u):$(id -g)" \
@@ -39,7 +39,7 @@ alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
 
 ## Postman Collection
 
-[API Testing Collection](https://www.postman.com/bruno-dev1/workspace/objective/collection/28578263-21dcaddf-e4b1-43bb-b688-3dc3f53fa372?action=share&creator=28578263)
+[API Testing Collection](https://www.postman.com/bruno-dev1/workspace/public-projects-and-challenges/collection/28578263-10ab5a0a-bebb-4db7-8682-8bb8214ad7dc?action=share&creator=28578263)
 
 ## Tests
 
